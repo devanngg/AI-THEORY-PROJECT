@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Coloring CSP Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="title-group">
+          <p class="eyebrow">AI Theory Project</p>
+          <h1>Graph Coloring Simulator</h1>
+        </div>
+
+        <div class="meta-badges" aria-label="Project tags">
+          <span>CSP</span>
+          <span>Backtracking</span>
+          <span>MRV</span>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="Graph controls">
+        <div class="row">
+          <button id="add-node" class="primary">Add Node</button>
+          <button id="random-graph" class="secondary">Random Graph</button>
+          <button id="reset-graph" class="ghost">Reset</button>
+        </div>
+
+        <div class="row compact-row">
+          <label>
+            Number of colors
+            <input id="color-count" type="number" min="1" max="8" value="3" />
+          </label>
+
+          <button id="solve-backtracking" class="primary">Backtracking</button>
+          <button id="solve-mrv" class="secondary">MRV Heuristic</button>
+        </div>
+
+        <div class="row compact-row slider-row">
+          <label for="speed">Animation speed</label>
+          <input id="speed" type="range" min="100" max="1200" step="50" value="450" />
+        </div>
+      </section>
+
+      <main class="content-grid">
+        <section class="graph-panel panel">
+          <div class="panel-header">
+            <h2>Graph</h2>
+            <span id="status-badge" class="status-badge neutral">Ready</span>
+          </div>
+          <svg id="graph" viewBox="0 0 900 560" aria-label="Graph editor"></svg>
+        </section>
+
+        <aside class="side-panel">
+          <section class="panel">
+            <h2>Concept</h2>
+            <ul class="concept-list">
+              <li><strong>Variables:</strong> graph nodes</li>
+              <li><strong>Domains:</strong> available colors</li>
+              <li><strong>Constraints:</strong> adjacent nodes cannot share the same color</li>
+              <li><strong>Heuristic:</strong> MRV chooses the most constrained node first</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h2>Solution Steps</h2>
+            <ol id="steps" class="steps-list"></ol>
+          </section>
+
+          <section class="panel stats-panel">
+            <h2>Statistics</h2>
+            <div id="stats" class="stats-box">No run yet.</div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
